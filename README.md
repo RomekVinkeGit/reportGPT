@@ -1,6 +1,6 @@
 # Reshaped case
 
-An implementation of a Retrieval-Augmented Generation (RAG) system and table parsing system using LangChain, Chroma, OpenAI, and PDF processing utilities.
+An implementation of a Retrieval-Augmented Generation (RAG) system and table parsing system using LangChain, Chroma, Azure OpenAI, and PDF processing utilities.
 
 ## Setup
 
@@ -15,21 +15,17 @@ An implementation of a Retrieval-Augmented Generation (RAG) system and table par
      - Download "Windows installer (64-bit)"
      - Run the installer
      - **Important**: Check "Add Python 3.11 to PATH" during installation
-   - **Option 3**: Install via winget
-     ```bash
-     winget install Python.Python.3.11
-     ```
 
 3. Create and set up a virtual environment:
    ```bash
    # Create virtual environment with Python 3.11
-   py -3.11 -m venv venv-py311
+   py -3.11 -m venv venv
 
    # Activate the virtual environment
    # On Windows:
-   .\venv-py311\Scripts\activate
+   .\venv\Scripts\activate
    # On Unix/Mac:
-   source venv-py311/bin/activate
+   source venv/bin/activate
 
    # Install required packages
    pip install -r requirements.txt
@@ -38,10 +34,10 @@ An implementation of a Retrieval-Augmented Generation (RAG) system and table par
    pip install jupyter notebook ipykernel
 
    # Register the virtual environment as a Jupyter kernel
-   python -m ipykernel install --user --name=venv-py311 --display-name="Python 3.11 (venv-py311)"
+   python -m ipykernel install --user --name=venv --display-name="Reshaped case venv"
    ```
 
-4. Create a `.env` file in the project root with your OpenAI API credentials:
+4. Create a `.env` file in the project root with your Azure OpenAI API credentials:
    ```
    OPENAI_API_VERSION=your_api_version
    AZURE_OPENAI_ENDPOINT=your_azure_endpoint
@@ -53,8 +49,8 @@ An implementation of a Retrieval-Augmented Generation (RAG) system and table par
      ```bash
      jupyter notebook
      ```
-   - When creating a new notebook, select "Python 3.11 (venv-py311)" from the kernel dropdown
-   - Or in an existing notebook, go to "Kernel" → "Change kernel" and select "Python 3.11 (venv-py311)"
+   - When creating a new notebook, select "Reshaped case venv" from the kernel dropdown
+   - Or in an existing notebook, go to "Kernel" → "Change kernel" and select "Reshaped case venv"
 
 ## Project Structure
 
@@ -83,7 +79,7 @@ The Jupyter notebooks (`question_1.ipynb` and `question_2.ipynb`) are the main e
 
 ## Dependencies
 
-- OpenAI API (Azure or standard) for embeddings and generation
+- Azure OpenAI API for embeddings and generation
 - PyMuPDF (fitz) for PDF text extraction
 - Camelot for table extraction
 - Langchain for document processing and vector storage
